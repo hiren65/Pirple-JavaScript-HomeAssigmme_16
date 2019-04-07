@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spread Vs Rest</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel=stylesheet href= "lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/xml/xml.js"></script>
+    <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/css/css.js"></script>
+    <script src="mode/htmlmixed/htmlmixed.js"></script>
+    <style type=text/css>
+        .CodeMirror {
+        //float: left;
+            width: 100%;
+            border: 1px solid black;
+            background-color: #f6fdff;
+            font-size: 16px;
+        }
+        iframe {
+            width: 100%;
+            float: left;
+            height: 300px;
+            border: 1px solid black;
+            border-left: 0px;
+            margin-top: 10px;
+            background-color: #dbdbdb;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="d1" class="box">
+                <h2>Homework Assignment #16: Rest and Spread</h2>
+        </div>
+        <div id="d2" class="box">
+            <h3>What are the differences between rest and spread?</h3>
+            <ul>
+                <li>
+                    JavaScript ECMA6 came with cool new features '...' , is new JavaScript functionalists.
+                    It can be used in two different ways; as a spread operator OR as a rest parameter.
+                </li>
+                <li>
+                    Rest parameter: collects all remaining elements into an array.
+                </li>
+                <li>
+                    Spread operator: allows iterables( arrays / objects / strings ) to be expanded into
+                    single arguments/elements.
+                </li>
+
+            </ul>
+        </div>
+        <div class="box" id="d3">
+                <h4>Rest parameters</h4>
+                <p>
+                    From the definition we saw earlier, rest parameters collect all the remaining
+                    elements into an array.
+                </p>
+            <article>
+                <h3>Code preview</h3>
+
+                <textarea id=code name=code>
+                    <div id="c1">
+
+                    </div>
+                     <script>
+                        let arr = [];
+                        let arrTemp = [];
+                        let c1 = document.getElementById("c1");
+                        c1.innerHTML = squareSelected(1,2,3,4,5,6);
+
+                        function squareSelected(x,y,...others){
+                            for(const prop of others){
+                                let temp = prop*prop;
+                                arr.push(temp);
+                            }
+                            console.log(x + " and " +y);
+                            arrTemp.push(x + " and " +y +"<br>");
+                            console.log(...others);
+                            
+                            arrTemp.push(...others);
+                            arrTemp.push(" <br>");
+                            console.log(...arr);
+                            arrTemp.push(...arr);
+
+                            return arrTemp + " <br> "+ "final Array "+ arr;
+                        }
+
+                     </script>
+
+                </textarea>
+                <div>
+                    <iframe id=preview></iframe>
+                </div>
+                <script>
+                    var delay;
+                    // Initialize CodeMirror editor with a nice html5 canvas demo.
+                    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                        mode: 'text/html',
+                        lineNumbers: true,
+                        gutters: ["CodeMirror-linenumbers", "breakpoints"]
+                    });
+                    editor.on("change", function() {
+                        clearTimeout(delay);
+                        delay = setTimeout(updatePreview, 300);
+                    });
+                    editor.on("gutterClick", function(cm, n) {
+                        var info = cm.lineInfo(n);
+                        cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
+                    });
+
+                    function updatePreview() {
+                        var previewFrame = document.getElementById('preview');
+
+                        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+                        preview.open();
+                        preview.write(editor.getValue());
+                        preview.close();
+                    }
+
+                    function makeMarker() {
+                        var marker = document.createElement("div");
+                        marker.style.color = "#822";
+                        marker.innerHTML = "●";
+                        return marker;
+                    }
+                    setTimeout(updatePreview, 300);
+                </script>
+            </article>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>
