@@ -120,38 +120,51 @@
 
                     </div>
                      <script>
-                        let subject = "mathematics";
-                        let arrStr = [...subject];
+                        var subject = "mathematics";
+                        var arrStr = [...subject];
+                        var c11 = document.getElementById("c11");
+                        //c1.innerHTML = squareSelected(1,2,3,4,5,6);
+                        function createPrint(xx){
+                            return `<span> ${xx} </span> <br>`
+                        }
                         console.log("split the string " + arrStr);
+                        c11.innerHTML = createPrint(arrStr);
                         //It splits the single string into the array of strings
 
                         //We can use the spread operator to copy an array.
-                        const arrSample = [1, 2, 3];
-                        const arr2 = [...arrSample];
-                        console.log( "copy of arr2 " +arr2);
-
+                        var arrSample = [1, 2, 3];
+                        var arr2 = [...arrSample];
+                        console.log( "copy of arr2 " +arr2 );
+                        var ccc = "copy of arr2 " +arr2 +" <br>";
+                        c11.innerHTML = (c11.innerHTML).concat(createPrint(ccc))  ;
                         //Combine arrays
-                        const section1 = ["Oparation Theatre","Clinical Room","Lounge"];
-                        const section2 = ["Special Room","Semi Special Room","General Ward"];
+                        var section1 = ["Oparation Theatre","Clinical Room","Lounge"];
+                        var section2 = ["Special Room","Semi Special Room","General Ward"];
 
-                        const allSection = [...section1,...section2];
-
+                        var allSection = [...section1,...section2];
+                        var ccc1 = allSection + "<br>";
                         console.log(allSection);
-
+                        c11.innerHTML = (c11.innerHTML).concat(createPrint(ccc1))  ;
                         //In the above code, we combined section1 and section2 by using the spread operator.
 
                         //simple Math.max function
-                        let max = Math.max(12,34,56,11);
+                        var max = Math.max(12,34,56,11);
                         console.log("Use of Math.max Simple way " + max);
+                        var ccc2 = "Use of Math.max Simple way " + max + "<br>";
+                        c11.innerHTML = (c11.innerHTML).concat(createPrint(ccc2))  ;
                         //now we have array
-                        let arrayTemp = [2,5,3,8,1];
+                        var arrayTemp = [2,5,3,8,1];
                         //now we try to put array as parameter in Math.max function
                         max = Math.max(arrayTemp);
                         console.log("It throws error 'NaN' : " + max);
+                        var ccc3 = "It throws error 'NaN' : " + max + "<br>";
+                        c11.innerHTML = (c11.innerHTML).concat(createPrint(ccc3))  ;
                         //it answers NaN
                         //here comes spresd operator
                         max = Math.max(...arrayTemp);
                         console.log(" Spread Operators Use in Math.max(...array) : " + max);
+                        var ccc4 = " Spread Operators Use in Math.max(...array) : " + max + "<br>";
+                        c11.innerHTML = (c11.innerHTML).concat(createPrint(ccc4))  ;
 
                      </script>
 
