@@ -16,7 +16,7 @@ html{
     display: grid;
     grid-template-columns: 100%;
     //background-color: khaki;
-    grid-template-rows: 200px auto auto;
+    grid-template-rows: 200px auto auto auto;
     grid-gap: 5px;
 
 }
@@ -36,6 +36,7 @@ h2{
     border-radius: 15px;
     color: #6c885b;
     background-color: goldenrod;
+    padding: 5px;
 }
 #d2{
     background-color: rgba(45,123,12,0.44);
@@ -46,5 +47,21 @@ h2{
     background-color: rgba(45,123,12,0.44);
     padding: 5px;
 }
-
+#d4{
+    display: block;
+    background-color: rgba(45,123,12,0.44);
+    padding: 5px;
+    height: auto;
+}
+#sp{
+    font-size: 18px;
+    border: 1px solid black;
+    display: block;
+}
+#d5{
+    display: block;
+    background-color: rgba(45,123,12,0.44);
+    padding: 5px;
+    height: auto;
+}
 

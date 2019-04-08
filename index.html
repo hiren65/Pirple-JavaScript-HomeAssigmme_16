@@ -22,11 +22,12 @@
         iframe {
             width: 100%;
             float: left;
-            height: 300px;
+            height: auto
             border: 1px solid black;
             border-left: 0px;
             margin-top: 10px;
             background-color: #dbdbdb;
+
         }
     </style>
 </head>
@@ -58,17 +59,18 @@
                     From the definition we saw earlier, rest parameters collect all the remaining
                     elements into an array.
                 </p>
+
             <article>
-                <h3>Code preview</h3>
+                <h3>Code Editor & preview</h3>
 
                 <textarea id=code name=code>
                     <div id="c1">
 
                     </div>
                      <script>
-                        let arr = [];
-                        let arrTemp = [];
-                        let c1 = document.getElementById("c1");
+                        var arr = [];
+                        var arrTemp = [];
+                        var c1 = document.getElementById("c1");
                         c1.innerHTML = squareSelected(1,2,3,4,5,6);
 
                         function squareSelected(x,y,...others){
@@ -79,7 +81,7 @@
                             console.log(x + " and " +y);
                             arrTemp.push(x + " and " +y +"<br>");
                             console.log(...others);
-                            
+
                             arrTemp.push(...others);
                             arrTemp.push(" <br>");
                             console.log(...arr);
@@ -91,48 +93,108 @@
                      </script>
 
                 </textarea>
+
                 <div>
                     <iframe id=preview></iframe>
                 </div>
-                <script>
-                    var delay;
-                    // Initialize CodeMirror editor with a nice html5 canvas demo.
-                    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-                        mode: 'text/html',
-                        lineNumbers: true,
-                        gutters: ["CodeMirror-linenumbers", "breakpoints"]
-                    });
-                    editor.on("change", function() {
-                        clearTimeout(delay);
-                        delay = setTimeout(updatePreview, 300);
-                    });
-                    editor.on("gutterClick", function(cm, n) {
-                        var info = cm.lineInfo(n);
-                        cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
-                    });
 
-                    function updatePreview() {
-                        var previewFrame = document.getElementById('preview');
-
-                        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
-                        preview.open();
-                        preview.write(editor.getValue());
-                        preview.close();
-                    }
-
-                    function makeMarker() {
-                        var marker = document.createElement("div");
-                        marker.style.color = "#822";
-                        marker.innerHTML = "●";
-                        return marker;
-                    }
-                    setTimeout(updatePreview, 300);
-                </script>
             </article>
+
+        </div>
+
+        <div id="d4" class="box">
+            <div id="sp">
+                <span class="sp1">Note: Rest parameters have to be at the last argument.</span>
+                <span class="sp1">This is because it collects all remaining/ excess arguments into an array.</span>
+            </div>
+            <div id="myrest">
+                <h3>Spread Operators</h3>
+                <p>
+                    Spread operator helps us to expand the strings or array literals or object literals.
+                </p>
+                <article>
+                    <h3>Code Editor & preview</h3>
+
+                    <textarea id=code1 name=code>
+                    <div id="c11">
+
+                    </div>
+                     <script>
+                        let subject = "mathematics";
+                        let arrStr = [...subject];
+                        console.log("split the string " + arrStr);
+                        //It splits the single string into the array of strings
+
+                        //We can use the spread operator to copy an array.
+                        const arrSample = [1, 2, 3];
+                        const arr2 = [...arrSample];
+                        console.log( "copy of arr2 " +arr2);
+
+                        //Combine arrays
+                        const section1 = ["Oparation Theatre","Clinical Room","Lounge"];
+                        const section2 = ["Special Room","Semi Special Room","General Ward"];
+
+                        const allSection = [...section1,...section2];
+
+                        console.log(allSection);
+
+                        //In the above code, we combined section1 and section2 by using the spread operator.
+
+                        //simple Math.max function
+                        let max = Math.max(12,34,56,11);
+                        console.log("Use of Math.max Simple way " + max);
+                        //now we have array
+                        let arrayTemp = [2,5,3,8,1];
+                        //now we try to put array as parameter in Math.max function
+                        max = Math.max(arrayTemp);
+                        console.log("It throws error 'NaN' : " + max);
+                        //it answers NaN
+                        //here comes spresd operator
+                        max = Math.max(...arrayTemp);
+                        console.log(" Spread Operators Use in Math.max(...array) : " + max);
+
+                     </script>
+
+                </textarea>
+
+                    <div>
+                        <iframe id=preview1></iframe>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+        <div id="d5">
+            <h3>Summary :</h3>
+               <ul>
+
+                   <li>
+                       When we see "..." in the code, it is either rest parameters or the spread operator.
+                   </li>
+                   <li>There’s an easy way to distinguish between them:</li>
+                   <li>
+                       When ... is at the end of function parameters, it’s “rest parameters” and
+                       gathers the rest of the list of arguments into an array.
+                       When ... occurs in a function call or alike, it’s called a “spread operator” and
+                       expands an array into a list.
+                   </li>
+                   <li>
+                       Use patterns:
+                   </li>
+                   <li>
+                       Rest parameters are used to create functions that accept any number of arguments.
+                       The spread operator is used to pass an array to functions that normally require a
+                       list of many arguments.
+                       Together they help to travel between a list and an array of parameters with ease.
+                   </li>
+                   <li>All arguments of a function call are also available in “old-style” arguments: array-like iterable object.</li>
+               </ul>
         </div>
     </div>
     <footer>
-
+        <script src="editor1.js"></script>
     </footer>
 </body>
 </html>
