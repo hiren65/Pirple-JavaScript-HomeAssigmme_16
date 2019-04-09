@@ -23,7 +23,7 @@ html{
     color: white;
     //list-style: none;
     display: inline-block;
-    width: 15%;
+    width: 30%;
     text-align: center;
     cursor: pointer;
     border-radius: 15px;
@@ -39,9 +39,13 @@ label{
     display: block;
     //border: 1px solid black;
     margin-top: 7.5px;
-    font-size: 18px;
+    font-size: 16px;
     height: 25px;
     cursor: pointer;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 a{
     color: honeydew;
@@ -80,6 +84,7 @@ h2{
     color: #6c885b;
     background-color: goldenrod;
     padding: 5px;
+
 }
 #d2{
     background-color: rgba(45,123,12,0.44);
@@ -111,7 +116,42 @@ video{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+    width: 70%;
+}
+@media only screen and (max-width: 1200px) {
+
+    label{
+        display: block;
+        //border: 1px solid black;
+        margin-top: 7.5px;
+        font-size: 14px;
+        height: 25px;
+        cursor: pointer;
+    }
+    h2{
+        font-size: 16px;
+    }
+    .btn{
+        width: 35%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    label{
+        display: block;
+    //border: 1px solid black;
+        margin-top: 2.5px;
+        font-size: 10px;
+        height: 15px;
+        cursor: pointer;
+    }
+    #navigation{
+        height: 30px;
+    }
+    .btn{
+        height: 25px;
+        margin: 2px;
+    }
 }
 
 
